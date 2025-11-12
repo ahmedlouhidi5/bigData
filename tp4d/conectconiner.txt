@@ -1,0 +1,60 @@
+LAPTA@DESKTOP-A5BLFUB MINGW64 ~/Desktop/tp4d
+$ docker network inspect tp3-network
+[
+    {
+        "Name": "tp3-network",
+        "Id": "c7fd2810527c8d9975adc005b8377bb47010f178f4e3f1eebf1213813cce6631",
+        "Created": "2025-11-12T08:01:04.927063467Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.19.0.0/16",
+                    "Gateway": "172.19.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "6e087e7bf0c432b938edf0d21824b5fcf937b06998834b6a4d816977e763578a": {
+                "Name": "c3",
+                "EndpointID": "020021a31fe151117c66b94afea6733365883d9737e3c77e32158e8fd4315a4e",
+                "MacAddress": "da:db:a5:5d:5a:06",
+                "IPv4Address": "172.19.0.4/16",
+                "IPv6Address": ""
+            },
+            "92bb290ec2fa012e80f7e9eff947dc92d700520066894c616eb66912cefa20a7": {
+                "Name": "c2",
+                "EndpointID": "e874010331d1928953a80d8bd667c377c4ea7d96fb753d906c5c5643a2bb2f92",
+                "MacAddress": "ba:fd:6c:40:da:fd",
+                "IPv4Address": "172.19.0.3/16",
+                "IPv6Address": ""
+            },
+            "c0529351ffc3936da76dc9fb68e0b1ac4e883a37f7883fa16b08b3dd4d797c2d": {
+                "Name": "c1",
+                "EndpointID": "749618d7f285c6def03ab761503ce4d34bc607fe165b82bfab6d1a421bdf31ad",
+                "MacAddress": "ea:1a:ff:e3:cb:6a",
+                "IPv4Address": "172.19.0.2/16",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {
+            "com.docker.network.enable_ipv4": "true",
+            "com.docker.network.enable_ipv6": "false"
+        },
+        "Labels": {}
+    }
+]
+
+LAPTA@DESKTOP-A5BLFUB MINGW64 ~/Desktop/tp4d
