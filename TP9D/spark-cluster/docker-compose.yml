@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  spark-master:
+    image: apache/spark:3.5.0
+    container_name: spark-master
+    hostname: spark-master
+    command: [
+      "/opt/spark/bin/spark-class",
+      "org.apache.spark.deploy.master.Master",
+      "--host", "spark-master",
+      "--port", "7077",
+      "--webui-port", "8080"
+    ]
+    ports:
+      - "8085:8080"   # واجهة الويب للماستر
+      - "7077:7077"   # منفذ اتصال الـ workers و spark-submit
+    volumes:
+      - ./apps:/opt/spark-apps
+      - ./data:/opt/spark-data
+
+  spark-worker-1:
+    image: apache/spark:3.5.0
+    container_name: spark-worker-1
+    hostname: spark-worker-1
+    command: [
+      "/opt/spark/bin/spark-class",
+      "org.apache.spark.deploy.worker.Worker",
+      "spark://spark-master:7077"
+    ]
+    environment:
+      - SPARK_WORKER_CORES=2
+      - SPARK_WORKER_MEMORY=2g
+      - SPARK_WORKER_WEBUI_PORT=8081
+    depends_on:
+      - spark-master
+    ports:
+      - "8081:8081"   # واجهة الويب للـ worker
+    volumes:
+      - ./apps:/opt/spark-apps
+      - ./data:/opt/spark-data

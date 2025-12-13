@@ -1,0 +1,16 @@
+ cd spark-cluster
+docker compose up -d
+
+docker exec -it spark-master bash
+
+rm -rf /opt/spark-data/out-spark
+
+/opt/spark/bin/spark-submit \
+  --class spark.batch.tp21.WordCountTask \
+  --master spark://spark-master:7077 \
+  /opt/spark-apps/wordcount-spark-1.0-SNAPSHOT.jar \
+  /opt/spark-data/input.txt \
+  /opt/spark-data/out-spark
+
+  cat /opt/spark-data/out-spark/part-*
+
